@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `Messages` (
   `updatedAt` date NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE = InnoDB AUTO_INCREMENT = 9 DEFAULT CHARSET = utf8;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 DEFAULT CHARSET = utf8;
 
 # ------------------------------------------------------------
 # SCHEMA DUMP FOR TABLE: Users
@@ -38,6 +38,46 @@ CREATE TABLE IF NOT EXISTS `Users` (
 # DATA DUMP FOR TABLE: Messages
 # ------------------------------------------------------------
 
+INSERT INTO
+  `Messages` (
+    `ID`,
+    `senderName`,
+    `senderId`,
+    `receiverId`,
+    `createdAt`,
+    `updatedAt`,
+    `message`
+  )
+VALUES
+  (
+    1,
+    'steve',
+    2,
+    3,
+    '2018-10-08',
+    '2018-10-08',
+    '240081376a049f5a163881245013c569:5338fbfeaf8e676b0d8a3bb84868bac3'
+  );
+INSERT INTO
+  `Messages` (
+    `ID`,
+    `senderName`,
+    `senderId`,
+    `receiverId`,
+    `createdAt`,
+    `updatedAt`,
+    `message`
+  )
+VALUES
+  (
+    2,
+    'steve',
+    2,
+    3,
+    '2018-10-08',
+    '2018-10-08',
+    'ddeb5950df4637b33e0a53a74917f215:44ead83e0d94af8ddc9d145920a16768'
+  );
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: Users
