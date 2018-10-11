@@ -14,10 +14,10 @@ const doWork = async function(req,res,next)
 {
     cb = await mysqldump({
     connection: {
-        host: 'localhost',
-        user: 'admin',
-        password: 'Beagie1',
-        database: 'sarkisian',
+        host: process.env.DBSERVER,
+        user: process.env.DBLOGIN,
+        password: process.env.DBPASSWORD,
+        database: process.env.DATABASE,
     },
     dumpToFile: 'public/data/dump.sql',
     });
