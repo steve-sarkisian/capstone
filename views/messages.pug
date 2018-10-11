@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  #contain
+      .title
+        | Cybersecurity Capstone Project
+      .menu
+        a(href='/write') Compose
+        |   
+        a(href='/dbdump') Dump Database
+        |
+        a(href='/logoff') Logoff
+      .bouquet
+        .hollyhack
+          h3 Your Messages
+            table(width='100%')
+              each message in messages
+                tr
+                  td
+                    a(href='/read?id=' + message.id) Message from #{message.senderName} on #{message.createdAt}

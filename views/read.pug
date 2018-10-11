@@ -1,0 +1,15 @@
+extends layout
+
+block content
+      #contain
+       .title
+        | Cybersecurity Capstone Project
+       .menu
+        a(href='/write') Compose
+        |   
+        a(href='/dbdump') Dump Database
+        |
+        a(href='/logoff') Logoff
+       .bouquet
+         .hollyhack
+           p #{message}

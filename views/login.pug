@@ -1,0 +1,47 @@
+extends layout
+
+block content
+      script(type='text/javascript').
+           $(document).ready(function() {
+                $("#btnSubmit").attr("disabled", true);
+                $('#password').keyup(function() 
+                {
+                  checkStrength($('#user').val(),$('#password').val());
+                });
+                $('#user').keyup(function() 
+                {
+                  checkStrength($('#user').val(), $('#password').val());
+                });
+                function checkStrength(user, password) 
+                {
+                     var strength = 0
+                     if (password.length > 0 && user.length >0) {
+                          $("#btnSubmit").attr("disabled", false);
+                    }
+                    
+                 }
+               });
+      #contain
+       .title
+        | Cybersecurity Capstone Project
+       .menu
+        a(href='/login') Login
+        |   
+        a(href='/register') Register
+       .bouquet
+         .hollyhack
+          form(id='form-register' action ='/login' method="POST")
+            table(id="register" class="table table-stripped table-bordered" cellspacing="0" width="60%")
+             tr
+               td User:      
+               td 
+                   input#user(type='text', name='user')
+             tr
+               td Password: 
+               td
+                   input#password(type='password', name='password')
+                   #result.result= error      
+             tr
+               td
+               td 
+                   input(type='submit',value='Login',id='btnSubmit')

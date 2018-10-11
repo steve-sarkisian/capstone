@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  #contain
+    .title
+    | Cybersecurity Capstone Project
+    .menu
+      a(href='/write') Compose
+      |   
+      a(href='/dbdump') Dump Database
+      |   
+      a(href='/logoff') Logoff
+      .bouquet
+        .hollyhack
+          form(id='form-register' action ='/write' method="POST")
+            p
+              label(for='userlist') Message To:
+              select(name='userlist')
+                each to in tos
+                  option(value=to.id) #{to.user}
+            p
+              label(for='message') Message:     
+              textarea(name='message', style='width:200px; height:50px;')
+            p
+              input(type='submit' value='Send')
