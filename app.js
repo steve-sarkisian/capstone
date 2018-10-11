@@ -18,7 +18,7 @@ var readRouter = require('./routes/read');
 var writeRouter = require('./routes/write');
 var dbdumpRouter = require('./routes/dbdump');
 var logoffRouter = require('./routes/logoff');
-if (app.get('env') == 'development'){ require('dotenv').load(); }
+
 
 
 var app = express();
@@ -74,6 +74,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  if (req.app.get('env') == 'development'){ require('dotenv').load(); }
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
