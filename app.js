@@ -2,6 +2,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
+var MemcachedStore = require('connect-memjs')(session);
 
 var createError = require('http-errors');
 var express = require('express');
@@ -33,11 +34,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var store = new MemcachedStore({servers: [process.env.MEMCACHEDCLOUD_SERVERS], username: process.env.MEMCACHEDCLOUD_USERNAME, password: process.env.MEMCACHEDCLOUD_PASSWORD});
+
 app.use(
   session({
     secret: process.env.SESSIONSECRET, // don't put this into your code at production.  Try using saving it into environment variable or a config file.
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
+    store: store
   })
 );
 
@@ -75,6 +79,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   if (req.app.get('env') == 'development'){ require('dotenv').load(); }
+  //require('dotenv').load();
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
