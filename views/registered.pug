@@ -1,8 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Thank you for registering.  You may now login.
-  #container.col
-       p 
-            a(href='/login') Login
+
+      #contain
+       .title
+        | Cybersecurity Capstone Project
+       .menu
+        a(href='/login') Login
+        |   
+        a(href='/register') Register
+       .bouquet
+         .hollyhack
+           h1= title
+           p Thank you for registering.  You may now login.
+           p 
+             a(href='/login') Login

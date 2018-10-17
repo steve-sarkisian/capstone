@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Login', error: 'All good' });
+  res.render('login', { title: 'Login', error: '' });
 });
 
 router.post('/', function(req,res,next) {
@@ -27,7 +27,6 @@ router.post('/', function(req,res,next) {
   					} 
   					else 
   					{
-            console.log("logins" + req.session.logins);
             req.session.logins = (req.session.logins == undefined) ? 1 : req.session.logins++;
             if(req.session.logins >4)
               { 

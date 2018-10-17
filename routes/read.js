@@ -11,8 +11,6 @@ router.get('/', function(req, res, next) {
   	.authenticate()
   	.then(() => {
 		Message.findOne({where: {id:  id}}).then(message => {
-        console.log(req.session.user['id']);
-        console.log(message.get('receiverId'));
         if(message.get('receiverId') == req.session.user['id'])
         {
          var rawMessage = message.get('message');
